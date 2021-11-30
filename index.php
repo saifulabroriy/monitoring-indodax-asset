@@ -35,23 +35,22 @@
           </div>
         </div>
         <h2 class="tool__title">Marketplace Indodax</h2>
-        <?php 
-          $data = json_decode(file_get_contents('https://indodax.com/api/ticker_all'), true);
-
-          // limit 25 per halaman
-          $limit = 25;
-          $total_items = count($data['tickers']); // total items
-          $total_pages = ceil($total_items / $limit);
-
-          // Link halaman
-          for($x = 1; $x <= $total_pages; $x++):
-            if ($x == 1) {
-              echo "<a class=\"page page--active\" href=\"indodax.php?page=$x\">$x</a>";
-            } else {
-              echo "<a class=\"page\" href=\"indodax.php?page=$x\">$x</a>";
-            }
-          endfor;
-        ?>
+        
+        <!-- Dropdown -->
+        <div class="dropdown">
+          <label for="dropdown__page">Halaman</label>
+          <select class="dropdown__page"><?php include "limit.php" ?></select>
+          <label for="dropdown__limit">Jumlah</label>
+          <select name="limit" class="dropdown__limit">
+            <option <?= $limit == 10 ? ' selected="selected"' : '';?>>10</option>
+            <option <?= $limit == 25 ? ' selected="selected"' : '';?>>25</option>
+            <option <?= $limit == 50 ? ' selected="selected"' : '';?>>50</option>
+            <option <?= $limit == 75 ? ' selected="selected"' : '';?>>75</option>
+            <option <?= $limit == 100 ? ' selected="selected"' : '';?>>100</option>
+            <option>Tampilkan Semua</option>
+          </select>
+        </div>
+        <!-- Akhir Dropdown -->
       </section>
       <section class="table">
         <table>
