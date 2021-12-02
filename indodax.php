@@ -113,7 +113,8 @@
     // Jika state yang dikirim true
     if ($state == "true"){
         // Mendapatkan timestamp dari mikrotime bingbon
-        $waktu = round($ex_infos->serverTime / 1000 );
+        $server_time = getData("https://indodax.com//api/server_time");
+        $waktu = round($server_time['server_time'] / 1000);
 
         $msg = "Waktu Server: " . date('j M Y, H:i:s', $waktu) . " %0a%0a";
 
@@ -121,7 +122,7 @@
         if (count($low_asset) > 0){
             $msg .= "LOW %0a%0a";
             for ($i=0; $i < count($low_asset); $i++) { 
-                $msg .= $i + 1 . ". " . $low_asset[$i] . " %0a";
+                $msg .= $i + 1 . ". " . strtoupper($low_asset[$i]) . " %0a";
             }
             $msg .= "%0a";
         }
@@ -130,7 +131,7 @@
         if (count($high_asset) > 0){
             $msg .= "HIGH %0a%0a";
             for ($i=0; $i < count($high_asset); $i++) { 
-                $msg .= $i + 1 . ". " . $high_asset[$i] . " %0a";
+                $msg .= $i + 1 . ". " . strtoupper($high_asset[$i]) . " %0a";
             }
         }
 
