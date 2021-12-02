@@ -24,6 +24,7 @@
           <button class="tele__btn tele__btn--stop tele__btn--clicked">Stop Bot</button>
         </div>
         <p class="tele__detail">Bot tidak mengirimkan pesan</p>
+        <p>Pesan dikirim ke <a href="https://t.me/api_kelompok_13_pert_12_2021" target="_blank">Grup API Kelompok 13 Testing</a></p>
       </section>
       <section class="tool">
         <div class="timer">
